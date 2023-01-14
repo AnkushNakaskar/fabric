@@ -42,6 +42,8 @@ import com.olacabs.fabric.model.common.ComponentSource;
 import com.olacabs.fabric.model.computation.ComputationSpec;
 import io.undertow.Undertow;
 import io.undertow.util.Headers;
+import java.util.Arrays;
+import java.util.List;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -125,6 +127,10 @@ public class Executor {
 
 
         CommandLineParser commandLineParser = new DefaultParser();
+        args =new String[]{"--spec-file","/Users/ankush.nakaskar/Office/newCode/mcp/library/ankush_workspace/fabric/fabric-examples/src/main/resources/spec.json"};
+        List<String> list = Arrays.asList(args);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> :: "+list);
+
         CommandLine commandLine = commandLineParser.parse(options, args);
 
         if (commandLine.hasOption("h")) {
@@ -166,7 +172,7 @@ public class Executor {
         ImmutableSet.Builder<ComponentSource> componentSourceSetBuilder = ImmutableSet.builder();
         spec.getSources().forEach(sourceMeta -> componentSourceSetBuilder.add(sourceMeta.getMeta().getSource()));
         spec.getProcessors()
-                .forEach(processorMeta -> componentSourceSetBuilder.add(processorMeta.getMeta().getSource()));
+            .forEach(processorMeta -> componentSourceSetBuilder.add(processorMeta.getMeta().getSource()));
         Collection<String> resolvedUrls = ComponentUrlResolver.urls(componentSourceSetBuilder.build());
         LOGGER.info("Component Jar URLs: {}", resolvedUrls);
 
@@ -197,7 +203,7 @@ public class Executor {
             registry.register("fd", new FileDescriptorRatioGauge());
             if (!Strings.isNullOrEmpty(opentsdbHost)) {
                 long interval = (null != System.getenv("OPENTSDB_REPORTER_INTERVAL")) ? Long
-                        .valueOf(System.getenv("OPENTSDB_REPORTER_INTERVAL")) : 60L;
+                    .valueOf(System.getenv("OPENTSDB_REPORTER_INTERVAL")) : 60L;
                 OpenTsdbReporter.forRegistry(registry)
                     .prefixedWith(spec.getName())
                     .convertRatesTo(TimeUnit.SECONDS)

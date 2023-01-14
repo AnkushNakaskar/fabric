@@ -362,3 +362,7 @@ What it does -
   - Creates boiler plate code, with example, for scheduled and stream processor. You can modify the example java file as per your need.
 
 
+
+* Run below maven command to check the application :
+  * ```mvn clean install -DskipTests  -Dcheckstyle.skip -U idea:idea ```
+  * After this run the executor.java , check project SDK is 1.8 is set

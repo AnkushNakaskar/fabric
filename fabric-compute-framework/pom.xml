@@ -110,8 +110,8 @@
 
         <dependency>
             <groupId>org.reflections</groupId>
-            <artifactId>reflections-maven</artifactId>
-            <version>${reflections.version}</version>
+            <artifactId>reflections</artifactId>
+            <version>0.9.9-RC2</version>
         </dependency>
 
         <dependency>
@@ -150,24 +150,79 @@
 
     <repositories>
         <repository>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>hortonworks.extrepo</id>
+            <name>Hortonworks HDP</name>
+            <url>https://repo.hortonworks.com/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>phonepe-releases</id>
+            <url>https://artifactory.phonepe.com/repository/releases</url>
+        </repository>
+        <repository>
+            <id>phonepe-snapshots</id>
+            <url>https://artifactory.phonepe.com/repository/snapshots</url>
+        </repository>
+        <repository>
+            <id>clojars</id>
+            <name>Clojars repository</name>
+            <url>https://clojars.org/repo</url>
+        </repository>
+        <!-- HDP Repositories -->
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
             <snapshots>
                 <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
             </snapshots>
-            <id>bintray-readytalk-maven</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/readytalk/maven</url>
+            <id>HDPReleases</id>
+            <name>HDP Releases</name>
+            <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <id>HDPPublic</id>
+            <name>HDP Public</name>
+            <url>http://repo.hortonworks.com/content/repositories/public/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <layout>default</layout>
+            <id>cloudera</id>
+            <name>cloudera</name>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
         </repository>
     </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-readytalk-maven</id>
-            <name>bintray-plugins</name>
-            <url>http://dl.bintray.com/readytalk/maven</url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <build>
         <plugins>
