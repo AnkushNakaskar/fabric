@@ -366,3 +366,8 @@ What it does -
 * Run below maven command to check the application :
   * ```mvn clean install -DskipTests  -Dcheckstyle.skip -U idea:idea ```
   * After this run the executor.java , check project SDK is 1.8 is set
+
+* Point to remember in this library :
+  * We cant have same source  for different processor pipeline
+    * Like for example checkout spec1.json , it will not work since random-source can be only in application
+    * You can have different jar deployment with different spec but codebase can be one.
